@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seekshith Reddypogu | Video Editor</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.6;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.78);
+      padding: 16px 20px;
+      text-align: center;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    nav a {
+      color: #1d1d1f;
+      text-decoration: none;
+      margin: 0 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: 0.25s;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    header {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #dbeafe 100%);
+    }
+
+    header h1 {
+      font-size: clamp(42px, 7vw, 82px);
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+      color: #1d1d1f;
+    }
+
+    header h2 {
+      font-size: clamp(18px, 2.5vw, 26px);
+      color: #6e6e73;
+      margin-bottom: 22px;
+      font-weight: 500;
+    }
+
+    header p {
+      max-width: 760px;
+      margin: auto;
+      color: #6e6e73;
+      font-size: 19px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 34px;
+      padding: 13px 30px;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 600;
+      box-shadow: 0 14px 32px rgba(37,99,235,0.25);
+      transition: 0.25s;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(37,99,235,0.32);
+    }
+
+    .btn-secondary {
+      margin-left: 12px;
+      background: rgba(255,255,255,0.85);
+      color: #2563eb;
+      border: 1px solid rgba(59,130,246,0.25);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.08);
+    }
+
+    .btn-secondary:hover {
+      background: #ffffff;
+      color: #1d4ed8;
+      box-shadow: 0 18px 38px rgba(0,0,0,0.12);
+    }
+
+    section {
+      padding: 78px 10%;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4vw, 46px);
+      margin-bottom: 26px;
+      color: #1d1d1f;
+      letter-spacing: -1px;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 54px;
+      height: 4px;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      border-radius: 999px;
+      margin-top: 10px;
+    }
+
+    .about p,
+    .experience p,
+    .contact p,
+    #education p {
+      color: #6e6e73;
+      max-width: 920px;
+      font-size: 18px;
+    }
+
+    .skills-grid,
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 22px;
+      margin-top: 28px;
+    }
+
+    .card,
+    .portfolio-box {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(59,130,246,0.15);
+      border-radius: 28px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+      transition: 0.25s;
+    }
+
+    .card {
+      padding: 30px;
+    }
+
+    .card:hover,
+    .portfolio-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 55px rgba(0,0,0,0.09);
+      border-color: rgba(59,130,246,0.35);
+    }
+
+    .card h3,
+    .portfolio-box h3 {
+      margin-bottom: 12px;
+      color: #1d1d1f;
+      font-size: 21px;
+    }
+
+    .card p,
+    .card li {
+      color: #6e6e73;
+      font-size: 16px;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      margin: 10px 0;
+    }
+
+    li::before {
+      content: "•";
+      color: #2563eb;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    .portfolio-box {
+      min-height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 28px;
+      background: linear-gradient(145deg, #ffffff, #e0edff);
+    }
+
+    .contact a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px;
+      background: rgba(255,255,255,0.72);
+      color: #6e6e73;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    @media (max-width: 768px) {
+      nav a {
+        display: inline-block;
+        margin: 8px;
+      }
+
+      section {
+        padding: 56px 6%;
+      }
+
+      header {
+        min-height: 82vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#experience">Experience</a>
+    <a href="#hire">Hire Me</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header>
+    <div>
+      <h1>SEEKSHITH REDDYPOGU</h1>
+      <h2>Video Editor • Motion Graphics Designer • Sound Designer</h2>
+      <p>
+        I create cinematic edits, Instagram reels, motion graphics, color grading, transitions, visual effects, and sound-designed content for creators, brands, and social media platforms.
+      </p>
+      <a href="#portfolio" class="btn">View My Work</a>
+      <a href="#hire" class="btn btn-secondary">Hire Me</a>
+    </div>
+  </header>
+
+  <section class="about" id="about">
+    <h2 class="section-title">About Me</h2>
+    <p>
+      I am a creative and passionate Video Editor and Motion Graphics Designer based in
+      Hyderabad, Telangana. I work with Adobe Premiere Pro, Adobe After Effects, and
+      DaVinci Resolve to create cinematic edits, social media reels, video editing projects,
+      birthday edits, color grading, visual effects, and sound design.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="card">
+        <h3>Software</h3>
+        <ul>
+          <li>Adobe Premiere Pro</li>
+          <li>Adobe After Effects</li>
+          <li>DaVinci Resolve</li>
+          <li>Fusion</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Editing</h3>
+        <ul>
+          <li>Cinematic Editing</li>
+          <li>Reel Editing</li>
+          <li>Speed Ramping</li>
+          <li>Transitions</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Post Production</h3>
+        <ul>
+          <li>Color Grading</li>
+          <li>Motion Graphics</li>
+          <li>Visual Effects</li>
+          <li>Sound Design</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <h2 class="section-title">Portfolio</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-box">
+        <h3>Cinematic Reels</h3>
+      </div>
+      <div class="portfolio-box">
+        <h3>Video Editing</h3>
+      </div>
+      <div class="portfolio-box">
+        <h3>Motion Graphics</h3>
+      </div>
+      <div class="portfolio-box">
+        <h3>Birthday & Event Edits</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience" id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="card">
+      <h3>Freelance Video Editor & Motion Graphics Designer</h3>
+      <p><strong>2025 – Present</strong></p>
+      <p>
+        Created cinematic edits, short-form social media content, motion graphics,
+        color grading projects, sound sync edits, and visual effects-based videos.
+      </p>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2 class="section-title">Education</h2>
+    <div class="card">
+      <h3>Shree Swaminarayan Gurukul International School</h3>
+      <p>Hyderabad, Telangana, India</p>
+    </div>
+  </section>
+
+  <section id="hire">
+    <h2 class="section-title">Hire Me</h2>
+    <div class="card">
+      <h3>Need a Video Editor?</h3>
+      <p>
+        I am available for cinematic reels, social media edits, motion graphics,
+        birthday and event edits, color grading, sound design, and short-form content editing.
+      </p>
+      <a href="mailto:seekshithr@gmail.com?subject=Video Editing Work Inquiry" class="btn">Hire Through Email</a>
+      <a href="https://instagram.com/editsbysrp" target="_blank" class="btn btn-secondary">DM on Instagram</a>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2 class="section-title">Contact</h2>
+    <p>Email: <a href="mailto:seekshithr@gmail.com">seekshithr@gmail.com</a></p>
+    <p>Location: Hyderabad, Telangana, India</p>
+    <p>Instagram: <a href="https://instagram.com/editsbysrp" target="_blank">@editsbysrp</a></p>
+  </section>
+
+    <section style="padding: 20px 10%;">
+    <div class="card" style="text-align:center; background: linear-gradient(145deg, #ffffff, #edf4ff); border: 1px solid rgba(59,130,246,0.2);">
+      <h3 style="margin-bottom:10px; color:#2563eb;">Important Note</h3>
+      <p>
+        Hiring is currently available only until 31st April and will reopen again from 1 October to 30 October.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Seekshith Reddypogu. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
